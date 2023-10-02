@@ -1,0 +1,21 @@
+{
+    "name": "nicolasblancom/magento2-module-freeshippingbar",
+    "description": "The FreeShippingBar module shows a banner with a 'free shipping from X' price notice and makes the calculations.",
+    "require": {
+        "php": "^8",
+        "magento/framework": ">=103"
+    },
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "MIT"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Nicolasblancom\\FreeShippingBar\\": ""
+        }
+    }
+}
