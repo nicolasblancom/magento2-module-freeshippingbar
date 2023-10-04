@@ -7,13 +7,11 @@ define([
 
     return Component.extend({
         defaults: {
-            test: "this is a test"
+            message: "Free shipping for orders above XX.XX!"
         },
         initialize: function () {
             this._super();
             const self = this;
-
-            console.log(self.test);
         }
     });
 });
