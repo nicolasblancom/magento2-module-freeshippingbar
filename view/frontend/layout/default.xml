@@ -5,7 +5,7 @@
         <referenceContainer name="header.container">
             <block name="free_shipping_bar"
                    template="Nicolasblancom_FreeShippingBar::free-shipping-bar.phtml"
-                    before="-">
+                   before="-">
                 <arguments>
                     <argument name="jsLayout" xsi:type="array">
                         <item name="components" xsi:type="array">
@@ -16,6 +16,15 @@
                                 <item name="config" xsi:type="array">
                                     <item name="template" xsi:type="string">
                                         Nicolasblancom_FreeShippingBar/free-shipping-bar
+                                    </item>
+                                    <item name="messageDefault" xsi:type="string" translate="true">
+                                        Free shipping if order is above XX.XX
+                                    </item>
+                                    <item name="messageLeft" xsi:type="string" translate="true">
+                                        Only XX.XX left to get free shipping
+                                    </item>
+                                    <item name="messageFree" xsi:type="string" translate="true">
+                                        Now you have free shipping for this order!
                                     </item>
                                 </item>
                             </item>
