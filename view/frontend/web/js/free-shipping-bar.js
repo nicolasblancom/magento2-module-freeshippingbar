@@ -13,7 +13,10 @@ define([
         defaults: {
             message: "Free shipping for orders above XX.XX!",
             cartAmount: 0.00,
-            formattedCartAmount: '<span class="price">0.00</span>'
+            formattedCartAmount: '<span class="price">0.00</span>',
+            tracks: {
+                cartAmount: true
+            }
         },
         initialize: function () {
             this._super();
@@ -27,7 +30,7 @@ define([
             });
 
             // Define message
-            self.message = ko.computed(() => {
+            self.message = ko.computed(function () {
                 const pricePlaceholder = 'XX.XX';
 
                 if (self.cartAmount === 0.00) {
@@ -44,6 +47,11 @@ define([
                 if (self.cartAmount >= self.threshold) {
                     return self.messageFree;
                 }
+            });
+
+            // Subscribe to cart amount changes
+            cart.subscribe((cart) => {
+                self.cartAmount = parseFloat(cart.subtotalAmount);
             });
         },
         formatCurrency: function (amount) {
