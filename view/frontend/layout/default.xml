@@ -26,6 +26,7 @@
                                     <item name="messageFree" xsi:type="string" translate="true">
                                         Now you have free shipping for this order!
                                     </item>
+                                    <item name="threshold" xsi:type="number">100</item>
                                 </item>
                             </item>
                         </item>
