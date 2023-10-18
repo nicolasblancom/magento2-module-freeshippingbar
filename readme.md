@@ -52,3 +52,10 @@ If you want to change those messages just extend this xml in your theme by copyi
 `<your-vendor>/<your-theme>/layout/default.xml`
 
 ### Change threshold
+
+Similar to messages variables. In `view/frontend/layout/default.xml` file you will see:
+
+`<item name="threshold" xsi:type="number">100</item>`
+
+If you want to change the threshold variable just extend this xml in your theme by copying it to:
+`<your-vendor>/<your-theme>/layout/default.xml`
