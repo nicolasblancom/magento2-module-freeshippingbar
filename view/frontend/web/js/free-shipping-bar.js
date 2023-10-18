@@ -1,11 +1,13 @@
 define([
     'uiComponent',
     'knockout',
-    'Magento_Customer/js/customer-data'
+    'Magento_Customer/js/customer-data',
+    'underscore'
 ], function (
     Component,
     ko,
-    customerData
+    customerData,
+    _
 ) {
     'use strict';
 
@@ -25,15 +27,17 @@ define([
             // Get cart amount
             const cart = customerData.get('cart');
             customerData.getInitCustomerData().done(() => {
-                self.cartAmount = parseFloat(cart().subtotalAmount);
-                self.formattedCartAmount = cart().subtotal_excl_tax;
+                if (!_.isEmpty(cart()) && !_.isUndefined(cart().subtotalAmount)) {
+                    self.cartAmount = parseFloat(cart().subtotalAmount);
+                    self.formattedCartAmount = cart().subtotal_excl_tax;
+                }
             });
 
             // Define message
             self.message = ko.computed(function () {
                 const pricePlaceholder = 'XX.XX';
 
-                if (self.cartAmount === 0.00) {
+                if (_.isUndefined(self.cartAmount) || self.cartAmount === 0.00) {
                     console.log(self.threshold)
                     return self.messageDefault.replace(pricePlaceholder, self.formatCurrency(self.threshold));
                 }
@@ -51,7 +55,9 @@ define([
 
             // Subscribe to cart amount changes
             cart.subscribe((cart) => {
-                self.cartAmount = parseFloat(cart.subtotalAmount);
+                if (!_.isEmpty(cart) && !_.isUndefined(cart.subtotalAmount)) {
+                    self.cartAmount = parseFloat(cart.subtotalAmount);
+                }
             });
         },
         formatCurrency: function (amount) {
